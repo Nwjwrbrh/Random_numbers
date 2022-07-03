@@ -22,6 +22,6 @@ plt.plot(x,err)#plotting the CDF
 plt.grid() #creating the grid
 plt.xlabel('$x_i$')
 plt.ylabel('$F_X(x_i)$')
-plt.legend(["Numerical","Theory"])
-plt.savefig("1.2/uni_cdf.pdf") #to save the fig
+plt.legend(["points","line"])
+#plt.savefig("1.2/uni_cdf.pdf") #to save the fig
 plt.show()
