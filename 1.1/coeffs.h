@@ -11,9 +11,23 @@ double **transpose(double **a,  int m, int n);
 void uniform(char *str, int len);
 void gaussian(char *str, int len);
 double mean(char *str);
+double var(char*str);
 //End function declaration
 
-
+double var(char*str){
+FILE* fp=fopen(str,"r");
+double b;
+int count=0;
+double t;
+double squares=0;
+while(fscanf(fp, "%lf", &t)!=-1){
+        count+=1;
+        squares=squares+(t*t);
+    }
+    b=(squares/count)-(mean(str)*mean(str));
+    fclose(fp);
+    return b;
+}
 //Defining the function for matrix creation
 double **createMat(int m,int n)
 {
