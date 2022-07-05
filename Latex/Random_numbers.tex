@@ -6,7 +6,7 @@
 %\usepackage{multicolumn}
 %\usepackage{subcaption}
 %\doublespacing
-%\singlespacing
+\singlespacing
 \usepackage{csvsimple}
 \usepackage{amsmath}
 \usepackage{multicol}
@@ -68,7 +68,7 @@
 
 
 \usepackage{url}
-\def\UrlBreaks{\do\\do-}
+\def\UrlBreaks{\do\/\do-}
 
 
 %\usepackage{stmaryrd}
@@ -120,7 +120,6 @@ columns=fullflexible
  
 
 \begin{document}
-%
 \tikzstyle{block} = [rectangle, draw,
     text width=3em, text centered, minimum height=3em]
 \tikzstyle{sum} = [draw, circle, node distance=3cm]
@@ -149,10 +148,10 @@ columns=fullflexible
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
 \providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
 \providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
-\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.]}}
-\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right.}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
 \providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
-\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
 \providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
 \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
 \providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
@@ -200,11 +199,7 @@ columns=fullflexible
 \let\vec\mathbf
 \numberwithin{equation}{section}
 \vspace{3cm}
-\title{%Convex Optimization in Python
-	\logo{
-	Random Numbers
-	}
-}
+\title{Random Numbers}
 %\title{
 %	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
 %}
@@ -221,7 +216,7 @@ columns=fullflexible
 % a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
 % was not built to handle multiple paragraphs
 %
-\author{ Pranav B% <-this % stops a space
+\author{ Nwjwr Khungur Brahma% <-this % stops a space
 % <-this % stops a space
 %\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
 %\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
@@ -273,18 +268,15 @@ Let $U$ be a uniform random variable between 0 and 1.
 \\
 \solution Download the following files and execute the  C program.
 \begin{lstlisting}
-wget https://github.com/Pranavb060504/Random_numbers/blob/main/1.1/exrand.c
-wget https://github.com/Pranavb060504/Random_numbers/blob/main/1.1/coeffs.h
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/1.1/exrand.c
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/1.1/coeffs.h
 \end{lstlisting}
 Use the below command in the terminal to run the code
 \begin{lstlisting}
 cc exrand.c -lm
 ./a.out
 \end{lstlisting}
-\\
-%
-\item
-Load the uni.dat file into python and plot the empirical CDF of $U$ using the samples in uni.dat. The CDF is defined as
+\item Load the uni.dat file into python and plot the empirical CDF of $U$ using the samples in uni.dat. The CDF is defined as
 \begin{align}
 F_{U}(x) = \pr{U \le x}
 \end{align}
@@ -292,7 +284,7 @@ F_{U}(x) = \pr{U \le x}
 \solution 
 The graph \ref{fig:uni_cdf} is obtained by running the below code
 \begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/1.2/uni_cdf.py
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/1.2/uni_cdf.py
 \end{lstlisting}
 Run the following command in the terminal to run the code.\\
 \begin{lstlisting}
@@ -300,52 +292,49 @@ python3 uni_cdf.py
 \end{lstlisting}
 \begin{figure}[h]
 \centering
-\includegraphics[width=\columnwidth]{./uni_cdf}
+\includegraphics[width=\columnwidth]{../1.2/uni_cdf}
 \caption{The CDF of $U$}
 \label{fig:uni_cdf}
 \end{figure}
-%
 \item
 Find a  theoretical expression for $F_{U}(x)$.\\
 \solution
-Since U is an uniform random variable distribution, $P_{U}(x_{i})=P_{U}(x_{j})=k$,$\forall i,j$\\
-	CDF of $P_{U}(x)$=$F_{U}(x)$\\
-	\begin{align}
-	=\int P_{U}(x) dx\\
-	=\int k dx\\
-  \text{wkt} \int_{0}^{1} kdx=1\\
+Since U is an uniform random variable distribution, $P_{U}(x_{i})=P_{U}(x_{j})=k$, $\forall i,j$\\
+So CDF of $P_{U}(x)$ = $F_{U}(x)$
+\begin{align}
+	&=\int P_{U}(x) dx\\
+	&=\int k dx\\
+  \text{wkt} \int_{0}^{1} kdx&=1\\
   \therefore k=1\\
   \therefore F_{U}(x)=x
 	\end{align}	
 \item
 The mean of $U$ is defined as
-%
 \begin{equation}
 E\sbrak{U} = \frac{1}{N}\sum_{i=1}^{N}U_i
 \end{equation}
-%
 and its variance as
-%
 \begin{equation}
 \text{var}\sbrak{U} = E\sbrak{U- E\sbrak{U}}^2 
 \end{equation}
 Write a C program to  find the mean and variance of $U$. \\
 \solution
 \begin{lstlisting}
-wget https://github.com/Pranavb060504/Random_numbers/blob/main/1.4/mean_var.c
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/1.4/mean_var.c
 \end{lstlisting}
 Use below command to run file,
 \begin{lstlisting}
 cc mean_var.c -lm
 ./a.out
 \end{lstlisting}
-running the code gives us Mean =0.500137 , Variance =0.083251
+running the code gives us Mean=0.500007, Variance=0.083301
 \item Verify your result theoretically given that
 \end{enumerate}
 %
 \begin{equation}
 E\sbrak{U^k} = \int_{-\infty}^{\infty}x^kdF_{U}(x)
 \end{equation}
+\solution
 \begin{align}
 &dF_{U}(x)=dx\\
 &\therefore E[U^k]=\int_{-\infty}^{\infty} x^k dx\\
@@ -371,35 +360,34 @@ and save in a file called gau.dat
 \\
 \solution
 \begin{lstlisting}
-wget https://github.com/Pranavb060504/Random_numbers/blob/main/1.1/exrand.c
-wget https://github.com/Pranavb060504/Random_numbers/blob/main/1.1/coeffs.h
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/1.1/exrand.c
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/1.1/coeffs.h
 \end{lstlisting}
 Running the above codes generates uni.dat and gau.dat file.
 Use the command 
 \begin{lstlisting}
 cc exrand.c -lm
-.\a.out
+./a.out
 \end{lstlisting}
 %
 \item
 Load gau.dat in python and plot the empirical CDF of $X$ using the samples in gau.dat. What properties does a CDF have?
 \\
 \solution 
-The CDF of $X$ is plotted in \ref{fig:gau_cdf},Properties of the CDF:
+The CDF of $X$ is plotted in \ref{fig:gau_cdf},\\
+Properties of the CDF:
 \begin{itemize}
 \item $\Phi(x)=P(Z \leq x)= \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x}\exp\left\{-\frac{u^2}{2}\right\} du$
 \item $\lim \limits_{x\rightarrow \infty} \Phi(x)=1, \hspace{5pt} \lim \limits_{x\rightarrow -\infty} \Phi(x)=0$
 \item  $\Phi(0)=\frac{1}{2}$
 \item  $\Phi(-x)=1-\Phi(x)$
 \end{itemize}
-\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\columnwidth]{./gau_cdf}
+\includegraphics[width=\columnwidth]{../2.2/gau_cdf}
 \caption{The CDF of $X$}
 \label{fig:gau_cdf}
 \end{figure}
-\\
 \item
 Load gau.dat in python and plot the empirical PDF of $X$ using the samples in gau.dat. The PDF of $X$ is defined as
 \begin{align}
@@ -409,14 +397,14 @@ What properties does the PDF have?
 \\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\columnwidth]{./gauss_pdf}
+\includegraphics[width=\columnwidth]{../2.3/gau_pdf}
 \caption{The PDF of $X$}
 \label{fig:gauss_pdf}
 \end{figure}
 \\
 \solution The PDF of $X$ is plotted in \ref{fig:gauss_pdf} using the code below
 \begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/2.3/pdf.py
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/2.3/gau_pdf.py
 \end{lstlisting}
 Use the below command to run the code:
 \begin{lstlisting}
@@ -430,9 +418,9 @@ Properties of PDF:
 \end{itemize}
 \item Find the mean and variance of $X$ by writing a C program.\\
 \solution
-Running the below code gives Mean = -0.000417 Variance= 0.999902
+Running the below code gives Mean =0.000326,Variance =1.000906
  \begin{lstlisting}
-wget https://github.com/Pranavb060504/Random_numbers/blob/main/2.4/mean_var(gau).c
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/2.4/mean_var.c
 \end{lstlisting}
 Command used:
 \begin{lstlisting}
@@ -445,10 +433,9 @@ p_{X}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty,
 \end{align}
 repeat the above exercise theoretically.
 %
-\end{enumerate}
-\\
-Given ,$p_{X}(x)=\frac{1}{\sqrt{2\pi}} e^{\frac{-x^2}{2}}$\\
- &E[x]=\int_{-\infty}^{\infty} x p_{X}(x) dx\\
+\solution Given ,$p_{X}(x)=\frac{1}{\sqrt{2\pi}} e^{\frac{-x^2}{2}}$\\
+\begin{align}
+E[x]&=\int_{-\infty}^{\infty} x p_{X}(x) dx\\
  &=\int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi}} x e^{-\frac{-x^2}{2}}\\
   &\because x e^{-\frac{-x^2}{2}} \text{is a odd function},\\
   \nonumber
@@ -463,7 +450,7 @@ Given ,$p_{X}(x)=\frac{1}{\sqrt{2\pi}} e^{\frac{-x^2}{2}}$\\
  &I=\int x e^{-\frac{-x^2}{2}}\\
  &\text{Let} \frac{x^2}{2}=t \\
  &\implies x dx=dt\\
- &\implies =\int e^{-t} dt=-e^{-t} +c\\
+ &\implies \int e^{-t} dt=-e^{-t} +c\\
  \label{eq:eq2}
  &\therefore \int x e^{-\frac{-x^2}{2}}=-e^{-\frac{-x^2}{2}} +c
  \end{align}
@@ -474,6 +461,7 @@ Given ,$p_{X}(x)=\frac{1}{\sqrt{2\pi}} e^{\frac{-x^2}{2}}$\\
 &\therefore \text{substituting limits we get}, E[x^2]=1\\
  &Var(X)=E[x^2]-(E[x])^2=1-0
  \end{align}
+ \end{enumerate}
 \section{From Uniform to Other}
 \begin{enumerate}[label=\thesection.\arabic*
 ,ref=\thesection.\theenumi]
@@ -486,11 +474,56 @@ V = -2\ln\brak{1-U}
 \end{equation}
 %
 and plot its CDF.\\ 
- \begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{V_cdf.pdf}
+\begin{figure}[h]
+\includegraphics[width=0.5\textwidth]{../3.1/V_cdf.pdf}
 \caption{CDF for (3)}
 \label{fig:V}
 \end{figure}
+ 
+\solution
+Running the below code generates samples of V from file uni.dat(U).
+\begin{lstlisting}
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/3.1/V.py
+\end{lstlisting}
+Use the below command in the terminal to run the code:
+\begin{lstlisting}
+python3 V.py
+\end{lstlisting}
+Now these samples are used to plot \eqref{fig:V} by running the below code,
+\begin{lstlisting}
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/3.1/V_cdf.py
+\end{lstlisting}
+Use the below command to run the code:
+\begin{lstlisting}
+python3 V_cdf.py
+\end{lstlisting}
+\item Find a theoretical expression for $F_V(x)$.
+\begin{align}
+ &F_{V}(x)=P(V \leq x)\\
+ &=P(-2 ln(1-U) \leq x)\\
+ &=P(1-e^{\frac{-x}{2}} \geq U)\\
+ &P(U<x)=\int_{0}^{x} dx=x\\
+ &\therefore P(1-e^{\frac{-x}{2}} \geq U)=1-e^{\frac{-x}{2}}, \forall x\geq 0 \\ 
+ \nonumber
+\end{align}
+\end{enumerate}
+\section{From Uniform to Other}
+\begin{enumerate}[label=\thesection.\arabic*
+,ref=\thesection.\theenumi]
+%
+\item
+Generate samples of 
+%
+\begin{equation}
+V = -2\ln\brak{1-U}
+\end{equation}
+%
+and plot its CDF.\\ 
+%\begin{figure}[h]
+%\includegraphics[width=0.5\textwidth]{V_cdf.pdf}
+%\caption{CDF for (3)}
+%\label{fig:V}
+%\end{figure}
 \\ 
 \solution
 Running the below code generates samples of V from file uni.dat(U).
@@ -501,7 +534,6 @@ Use the below command in the terminal to run the code:
 \begin{lstlisting}
 python3 V.py
 \end{lstlisting}
-\\ 
 Now these samples are used to plot \eqref{fig:V} by running the below code,
 \begin{lstlisting}
 https://github.com/Pranavb060504/Random_numbers/blob/main/3.1/V_cdf.py
@@ -518,489 +550,6 @@ python3 V_cdf.py
  &P(U<x)=\int_{0}^{x} dx=x\\
  &\therefore P(1-e^{\frac{-x}{2}} \geq U)=1-e^{\frac{-x}{2}}, \forall x\geq 0 \\ 
  \nonumber
- \end{align}
-%
-%\item
-%Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
+\end{align}
 \end{enumerate}
-\section{Triangular Distribution}
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
-%
-\item Generate 
-	\begin{align}
-		T = U_1+U_2
-	\end{align}
-\solution 
-Run the below code to generate T.dat
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/4.1/T_gen_dat.c
-\end{lstlisting}
-Run the command below in the terminal 
-\begin{lstlisting}
-cc T_gen_dat.c -lm
-./a.out
-\end{lstlisting}
-\item Find the CDF of $T$.
-\begin{align}
-F_{T}(t)=P(T<t)
-\\=P(U_1 +U_2 <t)
-\end{align}
-we know that $0\leq U_1 \leq 1$ and $0\leq U_2 \leq 1$\\
-$\therefore 0\leq U_1 + U_2 \leq 2$, so\\
- $\forall t>2, P(U_1 +U_2 <t)=1$\\
- $\forall t<0, P(U_1 +U_2 <t)=0$\\
-   for $0\leq t \leq 2$ let us split it into 2 cases, for $0 \leq t\leq 1$ and $1 <t \leq2$\\
-    \begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{T_plot}
-\caption{Plot}
-\label{fig:T_plot}
-\end{figure}
-\\
-The above figure is produced by the following code
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/4.2/T_plot.py
-\end{lstlisting}
-Run the following command in the terminal to run the code
-\begin{lstlisting}
-python3 T_plot.py
-\end{lstlisting}
-From Fig \eqref{fig:T_plot}
-\begin{align}
-&P(U_1+U_2<t, 0\leq t \leq 1)=\frac{ \Delta(EOF)}{\Delta(AEOD)}\\
-&=\frac{t^2}{2}\\
-&P(U_1+U_2<t, 1\leq t \leq 2)=\frac{\Delta(ABC)}{\Delta(AEOD)}\\
-&=1-\frac{(2-t)^{2}}{2}\\
-&\therefore F_{T}(t)=P(U_1 +U_2<t)=
-\begin{cases}
-0 & t<0\\
-\frac{t^2}{2} & 0\leq t \leq 1\\
-1-\frac{(2-t)^{2}}{2} & 1< t \leq 2\\
-1 & t>2
-\end{cases}
-\end{align}
-\item Find the PDF of $T$.\\
-\solution 
-\begin{align}
-P_{T}(t)=\frac{d(F_{T}(t))}{dt}\\
-\therefore P_{T}(t)=
-\begin{cases}
-0 & t<0\\
-t & 0\leq t \leq 1\\
-2-t  & 0< t \leq 2\\
-0 & t>2 
-\end{cases}    
-\end{align}
-\item Find the theoretical expressions for the PDF and CDF of $T$.
-\\
-\solution
-\begin{align}
-P_{T}(t)=
-\begin{cases}
-0 & t<0\\
-t & 0\leq t \leq 1\\
-2-t  & 0< t \leq 2\\
-0 & t>2 
-\end{cases} 
-\\   
-F_{T}(t)=
-\begin{cases}
-0 & t<0\\
-\frac{t^2}{2} & 0\leq t \leq 1\\
-1-\frac{(2-t)^{2}}{2} & 1< t \leq 2\\
-1 & t>2
-\end{cases}
-\end{align}
-\item Verify your results through a plot. 
-\\
-\solution 
- \begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{T_cdf}
-\caption{CDF for (4)}
-\label{fig:T_CDF}
-\end{figure}
-Run the below code to get the cdf
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/4.5/T_cdf.py
-\end{lstlisting}
-Use the following command in the terminal to run the code
-\begin{lstlisting}
-python3 T_cdf.py
-\end{lstlisting}
-\begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{T_pdf}
-\caption{PDF for (4)}
-\label{fig:T_PDF}
-\end{figure}
-Run the below code to get the pdf
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/4.5/T_pdf.py
-\end{lstlisting}
-Use the following command in the terminal to run the code
-\begin{lstlisting}
-python3 T_pdf.py
-\end{lstlisting}
-\end{enumerate}
-\section{Maximul Likelihood}
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
-\item Generate equiprobable $X \in \cbrak{1,-1}$.\\
-\solution
-Run the below code,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/5.1/bernoulli.c
-\end{lstlisting}
-Use the below command in the terminal to run the code
-\begin{lstlisting}
-cc bernoulli.c -lm
-./a.out
-\end{lstlisting}
-\item Generate 
-\begin{equation}
-Y = AX+N,
-\end{equation}
-		where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.\\
-\solution
-Run the below code for generating samples of Y,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/5.2/Ygen.c
-\end{lstlisting}
-Use the below command in the terminal to run the code
-\begin{lstlisting}
-cc Ygen.c -lm
-./a.out
-\end{lstlisting}
-\item Plot $Y$ using a scatter plot.\\
-	\solution
-	\begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{Yplot}
-\caption{plot for (5.3)}
-\label{fig:Y_Plot}
-\end{figure}
-	Run the following code to generate the scatter plot
-	\begin{lstlisting}
-	https://github.com/Pranavb060504/Random_numbers/blob/main/5.3/Yplot.py
-	\end{lstlisting}
-	Use the below command to run the code,
-	\begin{lstlisting}
-     python3 Yplot.py 
-	\end{lstlisting}
-\item Guess how to estimate $X$ from $Y$.\\
-	\solution
-	if the received signal is  is greater than 0, then the receiver assumes $s_1$ was transmitted.\\
-if the received signal is  is less than or equal to 0, then the receiver assumes $s_0$ was transmitted, where $s_0$ and $s_1$ are cases of $X=1$and $X=-1$ respectively where threshold 0 is taken to be the decision boundary.
-\begin{align}
-y>0 \implies s_1\\
-y\leq 0 \implies s_0
-\end{align}
-\item
-\label{ml-ch4_sim}
-Find 
-\begin{equation}
-	P_{e|0} = \pr{\hat{X} = -1|X=1}
-\end{equation}
-and 
-\begin{equation}
-	P_{e|1} = \pr{\hat{X} = 1|X=-1}
-\end{equation}
-\solution 
-Here $s_1$ and $s_2$ are equally probable ie, $p(s_1)=p(s_0)=\frac{1}{2}$ \\
-\begin{align}
-Q(x)=\frac{1}{\sqrt{2 \pi}} \int_{x}^{infty} e^{\frac{-x^{2}}{2} } dx\\
-&p(e|s_1)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{0} e^{-\frac{(y-1)^{2}}{2}} dy\\
-\nonumber
-&=Q(1)\\
-&p(e|s_0)=\frac{1}{\sqrt{2 \pi}} \int_{0}^{\infty} e^{-\frac{(y+1)^{2}}{2}} dy \\
-\nonumer
-&=Q(1)
-\end{align}
-%
-\item Find $P_e$ assuming that $X$ has equiprobable symbols.\\
-\solution
-Total probability of bit error:
-\begin{align}
-&P_{e}=p(s_1)p(e|s_1)+p(s_0)p(e|s_0)\\
-&=\frac{1}{2}[Q(1)+Q(1)]\\
-&\because p(s_1)=p(s_0)=\frac{1}{2},\text{X has equiprobable symbols}\\
-\nonumber
-&=Q(1)
-\end{align}
-%
-\item
-Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB. \\
-\solution
-%\begin{figure}[h]
-%\includegraphics[width=0.5\textwidth]{Pplot}
-%\caption{plot for (5.7)}
-%\label{fig:Y_Plot}
-%\end{figure}
-	Run the following code to generate the scatter plot
-	\begin{lstlisting}
-	https://github.com/Pranavb060504/Random_numbers/blob/main/5.7/Pplot.py
-	\end{lstlisting}
-	Use the below command to run the code,
-	\begin{lstlisting}
-     python3 Pplot.py 
-	\end{lstlisting}
-\item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that minimizes the theoretical $P_e$.\\
-\solution
-Threshold=$\delta$, \\
-\begin{align}
- &y>\delta \implies s_1\\
- &y \leq \delta \implies s_0\\
- &p(e|s_1)=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\delta} e^{-\frac{(y-1)^{2}}{2}} dy\\
- \nonumber
- &p(e|s_0)=\frac{1}{\sqrt{2 \pi}} \int_{\delta}^{\infty} e^{-\frac{(y+1)^{2}}{2}} dy\\
-\nonumber
-&P_e=\frac{1}{2\sqrt{2 \pi}}{( \int_{-\infty}^{\delta} e^{-\frac{(y-1)^{2}}{2}}dy+ \int_{\delta}^{\infty} e^{-\frac{(y+1)^{2}}{2}} dy)}\\
-&P_e=\frac{Q(\delta+1)+Q(1-\delta)}{2}\\
-&P_e=f(\delta)\\
-&\text{to minimize} P_e, \frac{d(f(\delta))}{d\delta}=0 ~\text{and} f"(\delta)>0\\
-&e^{\frac{-(1-\delta)^{2}}{2}}-e^{\frac{-(1+\delta)^{2}}{2}}=0\\
-&\therefore 1-\delta=1+\delta, \implies \delta=0\\
-&f"(\delta)=k((1-\delta)e^{\frac{-(1-\delta)^{2}}{2}}+(1+\delta)e^{\frac{-(1+\delta)^{2}}{2}})>0
-\end{align}
-\item Repeat the above exercise when 
-	\begin{align}
-		p_{X}(0) = p
-	\end{align}
-\solution
- $p_{X}(0)=p$ \\
- $\implies p_{X}(1)=1-p$
- \begin{align}
- P_{e}=p P(e|s_0)+(1-p)P(e|s_1)\\
- =p Q(1+\delta)+(1-p)Q(1-\delta)\\
- \frac{d(P_{e})}{d(\delta)}=0\\
- \implies e^\frac{(1+\delta)^{2}-(1-\delta)^{2}}{2}=\frac{p}{1-p}\\
- \therefore \delta=\frac{1}{2}log(\frac{p}{1-p})\\
-  \frac{d(P_{e})}{d(\delta)}\quad at \quad \delta+\epsilon>0 \\
-  \nonumber
-   \frac{d(P_{e})}{d(\delta)} \quad at\quad \delta-\epsilon<0 \\
-   \nonumber
-   \therefore \delta=\frac{1}{2}log(\frac{p}{1-p})\longrightarrow minima
- \end{align}
- \\
-\item Repeat the above exercise using the MAP criterion.  
-		\end{enumerate}
-\section{Gaussian to Other}
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
-\item
-Let $X_1 \sim  \gauss{0}{1}$ and $X_2 \sim  \gauss{0}{1}$. Plot the CDF and PDF of
-%
-\begin{equation}
-V = X_1^2 + X_2^2
-\end{equation}
-%
-\solution The sum of squares of k independent standard random normal variables is nothing but a  $\chi^2$ distribution with k degrees of freedom.\\
-$\chi^{2} (k)= \frac{x^{\frac{n}{2} -1}}{2^{\frac{n}{2}} \Gamma(
-\frac{n}{2})} e^{\frac{-x}{2}}, \forall x\geq 0$\\
-Here k=2,
-\begin{align}
-\therefore \chi^{2} (2)=P_{V}(v)=\frac{ e^{\frac{-x}{2}}}{2}\\
-\implies F_{V}(v)=\int_{0}^{v} \frac{ e^{\frac{-x}{2}}}{2} dx\\
-=1-e^{\frac{-x}{2}}
-\label{eq:eq6}
-\end{align}
-To generate data for V , run the following code,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/6.1/V_gen.c
-\end{lstlisting}
-Run the below command in terminal,
-\begin{lstlisting}
-cc V_gen.c -lm
-./a.out
-\end{lstlisting}
-The PDF plot of the $\chi^{2} (2)$ can be obtained by running the code below,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/6.1/chi_pdf.py
-\end{lstlisting}
-Use the following command in the terminal to run the code
-\begin{lstlisting}
-python3 chi_pdf.py
-\end{lstlisting}
-\begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{chi_pdf}
-\caption{PDF for (6.1)}
-\label{fig:chi_PDF}
-\end{figure}
-The CDF plot of the $\chi^{2} (2)$ can be obtained by running the code below,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/6.1/chi_cdf.py
-\end{lstlisting}
-Use the following command in the terminal to run the code
-\begin{lstlisting}
-python3 chi_cdf.py
-\end{lstlisting}
-\begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{chi_cdf}
-\caption{PDF for (6.1)}
-\label{fig:chi_PDF}
-\end{figure}
-%
-%
-%
-\item
-If
-%
-\begin{equation}
-F_{V}(x) = 
-\begin{cases}
-1 - e^{-\alpha x} & x \geq 0 \\
-0 & x < 0,
-\end{cases}
-\end{equation}
-%
-find $\alpha$.\\
-\solution 
-From \eqref{eq:eq6} $\alpha=0.5$
-%
-\item
-\label{ch3_raleigh_sim}
-Plot the CDF and PDf of
-%
-\begin{equation}
-A = \sqrt{V}
-\end{equation}
-%
-\solution
-\begin{align}
-&F_{A}(a)=P(A<a)=P(V<a^{2})\\
-&\text{from} \eqref{eq:eq6}, 
-=\begin{cases}
-1-e^{\frac{-a^{2}}{2}} & a>0\\
-0 & a<=0
-\end{cases}
-\\
-&\implies P_{A}(a)= \frac{d(F_{A}(a))}{da}\\
-=\begin{cases}
-ae^{\frac{-a^{2}}{2}} & a>0\\
-0 & a<=0
-\end{cases}
-\end{align}
-To generate data for A , run the following code,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/6.3/A_gen.c
-\end{lstlisting}
-Run the below command in terminal,
-\begin{lstlisting}
-cc A_gen.c -lm
-./a.out
-\end{lstlisting}
-The PDF plot of A can be obtained by running the code below,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/6.3/A_pdf.py
-\end{lstlisting}
-Use the following command in the terminal to run the code
-\begin{lstlisting}
-python3 A_pdf.py
-\end{lstlisting}
-\begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{A_pdf}
-\caption{PDF for (6.3)}
-\label{fig:A_PDF}
-\end{figure}
-The CDF plot of the A can be obtained by running the code below,
-\begin{lstlisting}
-https://github.com/Pranavb060504/Random_numbers/blob/main/6.3/A_cdf.py
-\end{lstlisting}
-Use the following command in the terminal to run the code
-\begin{lstlisting}
-python3 A_cdf.py
-\end{lstlisting}
-\begin{figure}[h]
-\includegraphics[width=0.5\textwidth]{A_cdf}
-\caption{CDF for (6.3)}
-\label{fig:A_PDF}
-\end{figure}
-\end{enumerate}
-\section{Conditional Probability}
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
-\item
-\label{ch4_sim}
-Plot 
-\begin{equation}
-P_e = \pr{\hat{X} = -1|X=1}
-\end{equation}
-%
-for 
-\begin{equation}
-Y = AX+N,
-\end{equation}
-where $A$ is Raleigh with $E\sbrak{A^2} = \gamma, N \sim \gauss{0}{1}, X \in \brak{-1,1}$ for $0 \le \gamma \le 10$ dB.
-%
-\item
-Assuming that $N$ is a constant, find an expression for $P_e$.  Call this $P_e(N)$
-%
-\item
-%
-\label{ch4_anal}
-For a function $g$,
-\begin{equation}
-E\sbrak{g(X)} = \int_{-\infty}^{\infty}g(x)p_{X}(x)\, dx
-\end{equation}
-%
-Find $P_e = E\sbrak{P_e(N)}$.
-%
-\item
-Plot $P_e$ in problems \ref{ch4_sim} and \ref{ch4_anal} on the same graph w.r.t $\gamma$.  Comment.
-		\end{enumerate}
-\section{Two Dimensions}
-Let 
-\begin{equation}
-\mbf{y} = A\mbf{x} + \mbf{n},
-\end{equation}
-where 
-\begin{align}
-x &\in \brak{\mbf{s}_0,\mbf{s}_1}, 
-\mbf{s}_0 = 
-\begin{pmatrix}
-1 
-\\
-0
-\end{pmatrix},
-\mbf{s}_1 = 
-\begin{pmatrix}
-0 
-\\
-1
-\end{pmatrix}
-\\
-\mbf{n} &= 
-\begin{pmatrix}
-n_1
-\\
-n_2
-\end{pmatrix},
-n_1,n_2 \sim \gauss{0}{1}.
-\end{align}
-%
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
-%%
-\item
-\label{ch5_fsk}
-Plot 
-%
-\begin{equation}
-\mbf{y}|\mbf{s}_0 \text{ and } \mbf{y}|\mbf{s}_1
-\end{equation}
-%
-on the same graph using a scatter plot.
-%
-\item
-For the above problem, find a decision rule for detecting the symbols $\mbf{s}_0 $ and $\mbf{s}_1$.
-%
-\item
-Plot 
-\begin{equation} 
-P_e = \pr{\hat{\mbf{x}} = \mbf{s}_1|\mbf{x} = \mbf{s}_0}
-\end{equation}
-with respect to the SNR from 0 to 10 dB.
-%
-\item
-Obtain an expression for $P_e$. Verify this by comparing the theory and simulation plots on the same graph.
-%
-		\end{enumerate}
 \end{document}
