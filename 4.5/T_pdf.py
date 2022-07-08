@@ -11,7 +11,7 @@ err = [] #declaring probability list
 pdf = [] #declaring pdf list
 h = 2*maxlim/(maxrange-1)
 
-randvar = np.loadtxt('4.1/T.dat',dtype='double')
+randvar = np.loadtxt('../4.1/T.dat',dtype='double')
 
 for i in range(0,maxrange):
 	err_ind = np.nonzero(randvar < x[i]) #checking probability condition

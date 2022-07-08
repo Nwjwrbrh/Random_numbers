@@ -18,7 +18,7 @@ def cdf(x):
 x = np.linspace(-2,5,50)#points on the x axis
 simlen = int(1e6) #number of samples
 err = [] #declaring probability list
-randvar = np.loadtxt('4.1/T.dat',dtype='double')
+randvar = np.loadtxt('../4.1/T.dat',dtype='double')
 for i in range(0,50):
 	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
 	err_n = np.size(err_ind) #computing the probability
@@ -30,5 +30,5 @@ plt.grid() #creating the grid
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
 plt.legend(["Numerical","Theory"])
-#plt.savefig("4.2/T_cdf.pdf")
+#plt.savefig("4.3/T_cdf.pdf")
 plt.show()

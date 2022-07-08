@@ -296,10 +296,6 @@ python3 uni_cdf.py
 \caption{The CDF of $U$}
 \label{fig:uni_cdf}
 \end{figure}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 \item
 Find a  theoretical expression for $F_{U}(x)$.\\
 \solution
@@ -392,10 +388,6 @@ Properties of the CDF:
 \caption{The CDF of $X$}
 \label{fig:gau_cdf}
 \end{figure}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 \item
 Load gau.dat in python and plot the empirical PDF of $X$ using the samples in gau.dat. The PDF of $X$ is defined as
 \begin{align}
@@ -488,7 +480,6 @@ and plot its CDF.\\
 \label{fig:V}
 \end{figure}
  
-<<<<<<< HEAD
 \solution
 Running the below code generates samples of V from file uni.dat(U).
 \begin{lstlisting}
@@ -516,55 +507,124 @@ python3 V_cdf.py
  \nonumber
 \end{align}
 \end{enumerate}
-\section{From Uniform to Other}
+\section{Triangular Distribution}
 \begin{enumerate}[label=\thesection.\arabic*
 ,ref=\thesection.\theenumi]
 %
-\item
-Generate samples of 
-%
-\begin{equation}
-V = -2\ln\brak{1-U}
-\end{equation}
-%
-and plot its CDF.\\ 
-%\begin{figure}[h]
-%\includegraphics[width=0.5\textwidth]{V_cdf.pdf}
-%\caption{CDF for (3)}
-%\label{fig:V}
-%\end{figure}
-\\ 
-=======
->>>>>>> refs/remotes/origin/main
-\solution
-Running the below code generates samples of V from file uni.dat(U).
+\item Generate 
+	\begin{align}
+		T = U_1+U_2
+	\end{align}
+\solution 
+Run the below code to generate T.dat
 \begin{lstlisting}
-wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/3.1/V.py
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/4.1/T_gen.c
+wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/4.1/T_gen_dat.c
 \end{lstlisting}
-Use the below command in the terminal to run the code:
+Run the command below in the terminal 
 \begin{lstlisting}
-python3 V.py
+cc T_gen.c
+cc T_gen_dat.c -lm
+./a.out
 \end{lstlisting}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
-Now these samples are used to plot \eqref{fig:V} by running the below code,
-\begin{lstlisting}
-wget https://github.com/Nwjwrbrh/Random_numbers/blob/main/3.1/V_cdf.py
-\end{lstlisting}
-Use the below command to run the code:
-\begin{lstlisting}
-python3 V_cdf.py
-\end{lstlisting}
-\item Find a theoretical expression for $F_V(x)$.
+\item Find the CDF of $T$.
 \begin{align}
- &F_{V}(x)=P(V \leq x)\\
- &=P(-2 ln(1-U) \leq x)\\
- &=P(1-e^{\frac{-x}{2}} \geq U)\\
- &P(U<x)=\int_{0}^{x} dx=x\\
- &\therefore P(1-e^{\frac{-x}{2}} \geq U)=1-e^{\frac{-x}{2}}, \forall x\geq 0 \\ 
- \nonumber
+F_{T}(t)=P(T<t)
+\\=P(U_1 +U_2 <t)
 \end{align}
+we know that $0\leq U_1 \leq 1$ and $0\leq U_2 \leq 1$\\
+$\therefore 0\leq U_1 + U_2 \leq 2$, so\\
+ $\forall t>2, P(U_1 +U_2 <t)=1$\\
+ $\forall t<0, P(U_1 +U_2 <t)=0$\\
+   for $0\leq t \leq 2$ let us split it into 2 cases, for $0 \leq t\leq 1$ and $1 <t \leq2$\\
+%\begin{figure}[h]
+%\includegraphics[width=0.5\textwidth]{T_plot}
+%\caption{Plot}
+%\label{fig:T_plot}
+%\end{figure}
+\\
+The above figure is produced by the following code
+\begin{lstlisting}
+https://github.com/Pranavb060504/Random_numbers/blob/main/4.2/T_plot.py
+\end{lstlisting}
+Run the following command in the terminal to run the code
+\begin{lstlisting}
+python3 T_plot.py
+\end{lstlisting}
+From Fig \eqref{fig:T_plot}
+\begin{align}
+&P(U_1+U_2<t, 0\leq t \leq 1)=\frac{ \Delta(EOF)}{\Delta(AEOD)}\\
+&=\frac{t^2}{2}\\
+&P(U_1+U_2<t, 1\leq t \leq 2)=\frac{\Delta(ABC)}{\Delta(AEOD)}\\
+&=1-\frac{(2-t)^{2}}{2}\\
+&\therefore F_{T}(t)=P(U_1 +U_2<t)=
+\begin{cases}
+0 & t<0\\
+\frac{t^2}{2} & 0\leq t \leq 1\\
+1-\frac{(2-t)^{2}}{2} & 1< t \leq 2\\
+1 & t>2
+\end{cases}
+\end{align}
+\item Find the PDF of $T$.\\
+\solution 
+\begin{align}
+P_{T}(t)=\frac{d(F_{T}(t))}{dt}\\
+\therefore P_{T}(t)=
+\begin{cases}
+0 & t<0\\
+t & 0\leq t \leq 1\\
+2-t  & 0< t \leq 2\\
+0 & t>2 
+\end{cases}    
+\end{align}
+\item Find the theoretical expressions for the PDF and CDF of $T$.
+\\
+\solution
+\begin{align}
+P_{T}(t)=
+\begin{cases}
+0 & t<0\\
+t & 0\leq t \leq 1\\
+2-t  & 0< t \leq 2\\
+0 & t>2 
+\end{cases} 
+\\   
+F_{T}(t)=
+\begin{cases}
+0 & t<0\\
+\frac{t^2}{2} & 0\leq t \leq 1\\
+1-\frac{(2-t)^{2}}{2} & 1< t \leq 2\\
+1 & t>2
+\end{cases}
+\end{align}
+\item Verify your results through a plot. 
+\\
+\solution 
+%\begin{figure}[h]
+%\includegraphics[width=0.5\textwidth]{T_cdf}
+%\caption{CDF for (4)}
+%\label{fig:T_CDF}
+%\end{figure}
+Run the below code to get the cdf
+\begin{lstlisting}
+https://github.com/Pranavb060504/Random_numbers/blob/main/4.5/T_cdf.py
+\end{lstlisting}
+Use the following command in the terminal to run the code
+\begin{lstlisting}
+python3 T_cdf.py
+\end{lstlisting}
+%\begin{figure}[h]
+%\includegraphics[width=0.5\textwidth]{T_pdf}
+%\caption{PDF for (4)}
+%\label{fig:T_PDF}
+%\end{figure}
+Run the below code to get the pdf
+\begin{lstlisting}
+https://github.com/Pranavb060504/Random_numbers/blob/main/4.5/T_pdf.py
+\end{lstlisting}
+Use the following command in the terminal to run the code
+\begin{lstlisting}
+python3 T_pdf.py
+\end{lstlisting}
 \end{enumerate}
 \end{document}
